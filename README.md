@@ -1,7 +1,7 @@
-#Project Details
+# Project Details
 > This is a project to build webapp using python flask framework and deploy it on Kubernetes cluster using KOPS. I am using AWS cloud as a target infra. This project uses Prometheus to collect metrcis from flask webapp and represent visualization on Grafana platfrom. The entire project is intended to be a container based system which is provisioned on EKS using KOPS.
 
-###NOTE: 
+### NOTE: 
 I have used subdomain "kubernetes.automatedesire.com" to create kubernetes cluster using kops with below command and configured it with ROUTE53 DNS service, make sure you have dedicated domain name which you can bind to your KOPS cluster. 
 
 ### Prerequisites
@@ -25,7 +25,7 @@ Below are the specs used in this project:
 * Docker : To run containers 
 * Grafana : Visualization
 
-###This project consist of two steps:
+### This project consist of two steps:
 1. Create flask-webapp and deployed it on AWS kubernetes cluster using KOPS.
 
 > To create kubernetes cluster using KOPS where master and worker nodes configuration will be "t2.micro" with 1 node each in "ap-south-1a" zone. Also using s3 bucket for storing KOPS state. 
@@ -58,10 +58,12 @@ kubernetes      ClusterIP      100.64.0.1    <none>                             
 
 c. We can access flask app using "External-IP" on browser but no one can remember this unique name given by ELB, so to overcome this we can create "A" record with choosing target as ELB id.
 i.e.  For my case I am using random one "messagebird.automatedesire.com."
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/manukoli1986/terraform_KOPS_flask_PG/blob/master/image/home.png)
 
 d. This Webapp show Homer Simpson picture by accessing /homersimpson & the time in the moment og requestin Covilha City (Portugal) when accessing /covilha.
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/manukoli1986/terraform_KOPS_flask_PG/blob/master/image/homersimpson.png)
+![alt text](https://github.com/manukoli1986/terraform_KOPS_flask_PG/blob/master/image/covilha.png)
+![alt text](https://github.com/manukoli1986/terraform_KOPS_flask_PG/blob/master/image/covilha1.png)
 
 e. Below are the modules used for app to working fine.
 ```
@@ -81,7 +83,7 @@ c. Terraform which famously known for IAAC. I have used it to deploy EC2 with al
 
 > Note: Make sure you have configured your environment with AWS access and secret key and .pem file to login into created EC2 
 
-* Please follow below command. 
+*Please follow below command. 
 #Go to "aws directory to run terrafrom code."
 ```
 $terraform init -- The terraform init command is used to initialize a working directory containing Terraform configuration files.
@@ -369,4 +371,5 @@ e. Now your prometheus and grafana has been installed and running on default por
 prometheus - 13.233.230.108:9090
 grafana - 13.233.230.108:3000 (Enabled anonymous account to view dashbaord)
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/manukoli1986/terraform_KOPS_flask_PG/blob/master/image/prometheus.png)
+![alt text](https://github.com/manukoli1986/terraform_KOPS_flask_PG/blob/master/image/grafana.png)
