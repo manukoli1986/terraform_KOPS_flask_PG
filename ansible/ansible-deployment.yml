@@ -1,0 +1,34 @@
+- hosts: localhost
+  vars:
+     ansible_python_interpreter: "/usr/bin/python"
+     ANSIBLE_HOST_KEY_CHECKING: "False"
+  gather_facts: no
+  sudo: yes
+  check_mode: no
+  tasks:
+  - name: Upload docker-compose files
+    synchronize: 
+      src: prometheus-docker
+      dest: /var/tmp/
+  - name: yum clean
+    shell: yum clean all
+    become: true
+    become_user: root
+
+  - name: Installing Docker 
+    yum:
+      name: docker
+      state: latest
+
+  - name: Installing Python-pip
+    yum:
+      name: python-pip
+  
+  - name: Installing docker-compose
+    pip: name=docker-compose
+    become: true
+
+  - service: name=docker state=restarted
+  - docker_service:
+      project_src: /var/tmp/prometheus-docker
+      state: present

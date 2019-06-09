@@ -1,0 +1,102 @@
+{
+  "aliasColors": {},
+  "bars": false,
+  "dashLength": 10,
+  "dashes": false,
+  "description": "",
+  "fill": 2,
+  "gridPos": {
+    "h": 8,
+    "w": 21,
+    "x": 0,
+    "y": 0
+  },
+  "id": 2,
+  "legend": {
+    "alignAsTable": true,
+    "avg": false,
+    "current": true,
+    "hideZero": false,
+    "max": false,
+    "min": false,
+    "rightSide": true,
+    "show": true,
+    "total": true,
+    "values": true
+  },
+  "lines": true,
+  "linewidth": 1,
+  "links": [],
+  "nullPointMode": "null",
+  "options": {},
+  "percentage": false,
+  "pointradius": 2,
+  "points": false,
+  "renderer": "flot",
+  "seriesOverrides": [],
+  "spaceLength": 10,
+  "stack": false,
+  "steppedLine": false,
+  "targets": [
+    {
+      "expr": "flask_http_request_duration_seconds_count",
+      "format": "time_series",
+      "hide": true,
+      "instant": false,
+      "interval": "",
+      "intervalFactor": 1,
+      "legendFormat": "path=/covilha",
+      "refId": "A"
+    },
+    {
+      "expr": "count(flask_http_request_duration_seconds_count) by (path)",
+      "format": "time_series",
+      "hide": false,
+      "instant": false,
+      "interval": "",
+      "intervalFactor": 1,
+      "legendFormat": "",
+      "refId": "B"
+    }
+  ],
+  "thresholds": [],
+  "timeFrom": null,
+  "timeRegions": [],
+  "timeShift": null,
+  "title": "Counts",
+  "tooltip": {
+    "shared": true,
+    "sort": 0,
+    "value_type": "individual"
+  },
+  "type": "graph",
+  "xaxis": {
+    "buckets": null,
+    "mode": "time",
+    "name": null,
+    "show": true,
+    "values": []
+  },
+  "yaxes": [
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    },
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    }
+  ],
+  "yaxis": {
+    "align": false,
+    "alignLevel": null
+  }
+}
